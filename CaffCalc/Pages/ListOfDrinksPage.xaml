@@ -1,0 +1,51 @@
+﻿<Page x:Class="CaffCalc.Pages.ListOfDrinksPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CaffCalc.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListOfDrinksPage"
+      Background="Wheat">
+
+    <!--DZIAŁA PRAWIE JAK POWINNO, NAWET NIE WYGLĄDA-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <!--TABELA Z NAPOJAMI // DODAJ CUSTOM NAZWY KOLUMS-->
+        <DataGrid Grid.Row="0" Margin="20" x:Name="dataGridOfDrinks"  AutoGenerateColumns="True">
+                
+        </DataGrid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <!--DODAWANIE NAPOJU-->
+            <StackPanel Width="200" HorizontalAlignment="Left" Margin="10">
+                <TextBlock  Text="Dodaj napój"/>
+                <!--NAZWA-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nazwa:"/>
+                    <TextBox Margin="10,0,0,0" Width="100" Name="drinkName"/>
+                </StackPanel>
+                <!--POJEMNOŚĆ-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Pojemność:"/>
+                    <TextBox Margin="10,0,0,0" Width="100" Name="drinkCapacity"/>
+                </StackPanel>
+                <!--ILOŚĆ KOFEINY-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Zawartość kofeiny:"/>
+                    <TextBox Margin="10,0,0,0" Width="100" Name="drinkCaffeineContent"/>
+                </StackPanel>
+                <!--SPOSÓB PODANIA WARTOŚCI-->
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton GroupName="CaffeineMg" Content="Na 100ml" Name="per100mlRadio" IsChecked="True"/>
+                    <RadioButton Margin="10,0,0,0" GroupName="CaffeineMg" Content="Całkowita" Name="wholeCaffeineRadio"/> <!--Zmień tę nazwę-->
+                </StackPanel>
+                <Button Margin="10" Content="Dodaj napój" Width="100" HorizontalAlignment="Center" Name="addDrinkButton" Click="addDrinkButton_Click"/>
+            </StackPanel>
+            <Button Height="50" Width="100" Content="Usuń napój" Name="removeDrinkButton" Click="removeDrinkButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

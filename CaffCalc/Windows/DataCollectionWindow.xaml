@@ -1,0 +1,33 @@
+﻿<Window x:Class="CaffCalc.Windows.DataCollectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CaffCalc.Windows"
+        mc:Ignorable="d"
+        Title="DataCollectionWindow" Height="250" Width="250"
+        Background="Wheat">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Padding="0,0,0,15" TextWrapping="Wrap" Text="Wygląda na to, że to Twoje pierwsze uruchomienie! Podaj proszę kilka informacji aby program mógł działać poprawnie"/>
+            <StackPanel Orientation="Horizontal">
+                <!--IMIĘ-->
+                <TextBlock Text="Imię"/>
+                <TextBox Name="name_TextBox" PreviewTextInput="Letters_TextBox_PreviewTextInput" Margin="10,0,0,0" Width="100"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <!--NAZWISKO-->
+                <TextBlock Text="Nazwisko"/>
+                <TextBox Name="surname_TextBox" PreviewTextInput="Letters_TextBox_PreviewTextInput" Margin="10,0,0,0" Width="100"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <!--WAGA-->
+                <TextBlock Text="Waga"/>
+                <TextBox Name="weight_TextBox" PreviewTextInput="Numbers_TextBox_PreviewTextInput" Margin="10,0,0,0" Width="100"/>
+            </StackPanel>
+            <Button Name="accept_Button" Margin="10" Content="Akceptuj" Width="180" HorizontalAlignment="Left" Click="accept_Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
