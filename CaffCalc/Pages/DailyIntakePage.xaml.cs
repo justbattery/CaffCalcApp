@@ -1,4 +1,5 @@
 ﻿using CaffCalc.CodeBehind;
+using CaffCalc.DailyIntakeFunctions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,25 +38,8 @@ namespace CaffCalc.Pages
             TodaysCaffeineConsumption += choosenDrink.CaffeineMg;
             HowMuchLeft -= choosenDrink.CaffeineMg;
 
-            foreach(var testDrink in ListOfDrinks)
-            {
-                if(choosenDrink.Name == testDrink.Name)
-                {
-                    int count = testDrink.Count + 1;
-                    TodaysDrinks drink = new TodaysDrinks{ Name = choosenDrink.Name, Count =  count};
-                    int index = ListOfDrinks.IndexOf(testDrink);
-                    ListOfDrinks.RemoveAt(index);
-                    ListOfDrinks.Insert(index, drink);
-                }
-                else
-                {
-                    int count = 1;
-                    TodaysDrinks drink = new TodaysDrinks { Name = choosenDrink.Name, Count = count };
-                    ListOfDrinks.Add(drink);
-                }
-            }
-            SaveDrinksToDictionary();
-            SaveStatsToFile();
+            AddDrinkToList.AddDrink(choosenDrink);
+
             // TO JEST DO POTĘŻNEJ ZMIANY
             LimitTextBlock.Text = $"Limit: {safeDailyDose}mg";
             CaffeineIntakeTextBlock.Text = $"Ile wypiłeś: {TodaysCaffeineConsumption}mg";

@@ -41,7 +41,7 @@ namespace CaffCalc.CodeBehind
         public static int HowMuchLeft; // ILE MU ZOSTAŁO
         public static int safeDailyDose; // TYLE MOŻE WYPIĆ
 
-        public static List<TodaysDrinks> ListOfDrinks = new List<TodaysDrinks>(); // LISTA DZISIAJ WYPITYCH
+        public static List<TodaysDrinks> TodaysDrinksList = new List<TodaysDrinks>(); // LISTA DZISIAJ WYPITYCH
 
         [DataMember] public static Dictionary<string, DailyConsumption> dailyConsumption = new Dictionary<string, DailyConsumption>(); // SŁOWNIK RESZTY STATYSTYK
 
@@ -129,7 +129,7 @@ namespace CaffCalc.CodeBehind
         }
 
         // Statystyki
-        public static void SaveDrinksToDictionary() // ZAPIS NAPOJÓW DO SŁOWNIKA
+        public static void SaveStatsToDictionary() // ZAPIS NAPOJÓW DO SŁOWNIKA
         {
             if (dailyConsumption.ContainsKey(DateToday))
             {
@@ -137,19 +137,19 @@ namespace CaffCalc.CodeBehind
                 {
                     HowMuchLeftThatDay = HowMuchLeft,
                     HowMuchConsumedThatDay = TodaysCaffeineConsumption,
-                    drinksConsumedThatDay = ListOfDrinks
+                    drinksConsumedThatDay = TodaysDrinksList
                 };
             }
             else dailyConsumption.Add(DateToday, new DailyConsumption
             {
                 HowMuchLeftThatDay = HowMuchLeft,
                 HowMuchConsumedThatDay = TodaysCaffeineConsumption,
-                drinksConsumedThatDay = ListOfDrinks
+                drinksConsumedThatDay = TodaysDrinksList
             });
         }
         public static void SaveStatsToFile() // ZAPIS STATYSTYK NAPOJÓW DO PLIKU
         {
-            SaveDrinksToDictionary();
+            SaveStatsToDictionary();
             DataContractSerializer serializer = new DataContractSerializer(typeof(Dictionary<string, DailyConsumption>));
             using (FileStream stats = new FileStream(@"Resources\Data\StatsDrinks.xml", FileMode.Create))
             {
@@ -169,7 +169,7 @@ namespace CaffCalc.CodeBehind
                 {
                     HowMuchLeft = dailyConsumption[DateToday].HowMuchLeftThatDay;
                     TodaysCaffeineConsumption = dailyConsumption[DateToday].HowMuchConsumedThatDay;
-                    ListOfDrinks = dailyConsumption[DateToday].drinksConsumedThatDay;
+                    TodaysDrinksList = dailyConsumption[DateToday].drinksConsumedThatDay;
                 }
             }
         }

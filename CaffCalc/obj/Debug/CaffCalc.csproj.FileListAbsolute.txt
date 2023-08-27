@@ -28,3 +28,33 @@ C:\Users\Patryk\Desktop\CaffCalc\CaffCalc\obj\Debug\CaffCalc.csproj.GenerateReso
 C:\Users\Patryk\Desktop\CaffCalc\CaffCalc\obj\Debug\CaffCalc.csproj.CoreCompileInputs.cache
 C:\Users\Patryk\Desktop\CaffCalc\CaffCalc\obj\Debug\CaffCalc.exe
 C:\Users\Patryk\Desktop\CaffCalc\CaffCalc\obj\Debug\CaffCalc.pdb
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\bin\Debug\CaffCalc.exe.config
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\bin\Debug\CaffCalc.exe
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\bin\Debug\CaffCalc.pdb
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.csproj.AssemblyReference.cache
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.csproj.SuggestedBindingRedirects.cache
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\MainWindow.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\ColorfulTestPage.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\DailyIntakePage.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\InfoPage.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\ListOfDrinksPage.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\ProfilePage.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\StatsPage.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Windows\DataCollectionWindow.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\App.g.cs
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc_MarkupCompile.cache
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc_MarkupCompile.lref
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\MainWindow.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\ColorfulTestPage.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\DailyIntakePage.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\InfoPage.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\ListOfDrinksPage.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\ProfilePage.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Pages\StatsPage.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\Windows\DataCollectionWindow.baml
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.g.resources
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.Properties.Resources.resources
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.csproj.GenerateResource.cache
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.csproj.CoreCompileInputs.cache
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.exe
+C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\obj\Debug\CaffCalc.pdb
