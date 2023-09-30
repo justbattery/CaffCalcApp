@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Patryk\Desktop\C#\PROJEKT KALKULATOR KOFEINY\CaffCalc\CaffCalc\App.xaml
-81074079833
+7398130668
 
-151510996781
+16-957536031
 14-663906356
-MainWindow.xaml;Pages\ColorfulTestPage.xaml;Pages\DailyIntakePage.xaml;Pages\InfoPage.xaml;Pages\ListOfDrinksPage.xaml;Pages\ProfilePage.xaml;Pages\StatsPage.xaml;Windows\DataCollectionWindow.xaml;
+MainWindow.xaml;Pages\DailyIntakePage.xaml;Pages\InfoPage.xaml;Pages\ListOfDrinksPage.xaml;Pages\ProfilePage.xaml;Pages\StatsPage.xaml;Windows\DataCollectionWindow.xaml;
 
-True
+False
 

@@ -21,26 +21,29 @@ namespace CaffCalc.Pages
     /// <summary>
     /// Logika interakcji dla klasy DailyIntakePage.xaml
     /// </summary>
+    
+    // DO SPRAWDZENIA REFAKTORYZACJA !!!
     public partial class DailyIntakePage : Page
     {
         public DailyIntakePage()
         {
             InitializeComponent();
 
+            // Przypisania do boxu
             chooseDrinkBox.ItemsSource = BackendDB.drinks;
             chooseDrinkBox.DisplayMemberPath = "Name";
             chooseDrinkBox.SelectedValuePath = "Number";
         }
 
-        private void DrinkConsumedButton_Click(object sender, RoutedEventArgs e)
+        private void DrinkConsumedButton_Click(object sender, RoutedEventArgs e) // Przycisk od dodawania napojów do statystyk
         {
             Drink choosenDrink = (Drink)chooseDrinkBox.SelectedItem;
             TodaysCaffeineConsumption += choosenDrink.CaffeineMg;
             HowMuchLeft -= choosenDrink.CaffeineMg;
 
-            AddDrinkToList.AddDrink(choosenDrink);
+            AddDrinkToList.AddDrink(choosenDrink); // Odwołanie do funkcji zapisującej
 
-            // TO JEST DO POTĘŻNEJ ZMIANY
+            // Wyświetlanie dzisiejszych statystyk// TO JEST DO POTĘŻNEJ ZMIANY
             LimitTextBlock.Text = $"Limit: {safeDailyDose}mg";
             CaffeineIntakeTextBlock.Text = $"Ile wypiłeś: {TodaysCaffeineConsumption}mg";
             CaffeineLeftTextBlock.Text = $"Ile zostało: {HowMuchLeft}mg";

@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static CaffCalc.CodeBehind.BackendDB;
+using static CaffCalc.Pages.SumUpCaffeine;
 
 namespace CaffCalc.Pages
 {
@@ -26,7 +29,7 @@ namespace CaffCalc.Pages
     
     // NOTES
     // - Ogarnij końcówkę kodu bo Ci wyświetlanie procentowego udziału nie działa
-    // - Zrób resztę
+
     public partial class StatsPage : Page
     {
         public StatsPage()
@@ -34,14 +37,14 @@ namespace CaffCalc.Pages
             InitializeComponent();
             GetStatsFromFile();
 
-            int sumConsumption = 0;
-            int sumLeft = 0;
-            foreach (var stats in dailyConsumption)
-            {
-                sumConsumption += stats.Value.HowMuchConsumedThatDay;
-                sumLeft += stats.Value.HowMuchLeftThatDay;
-            }
+            var result = SumUpCaffeineFunction(0, 0);
+
+            int sumConsumption = result.sumConsuption;
+            int sumLeft = result.sumLeft;
+
             // Obliczanie min, max, średniej, dnia w którym to było // KOD WZIĘTY Z PIERWSZEJ WERSJI
+
+            // DO FUNKCJI PRZYPISANIE STATYSTYK !!!
             int maxConsumption;
             string dayMaxConsumption;
             int minConsumption;
@@ -82,9 +85,7 @@ namespace CaffCalc.Pages
                 avgConsumption = 0;
                 avgLeft = 0;
             }
-            AvgCaffeine_TextBlock.Text = $"Avg: {avgConsumption}";
-            MaxCaffeine_TextBlock.Text = $"Max: {maxConsumption} Dnia: {dayMaxConsumption}";
-            MinCaffeine_TextBlock.Text = $"Max: {minConsumption} Dnia: {dayMinConsumption}";
+            // KONIEC FUNKCJI PRZYPISANIE STATYSTYK !!!
 
             // ZAPIS SUMY DLA POSZCZEGÓLNYCH NAPOJÓW
             var everyDrink = dailyConsumption.Values.SelectMany(t => t.drinksConsumedThatDay)
@@ -94,27 +95,36 @@ namespace CaffCalc.Pages
                 Name = g.Key,
                 Count = g.Sum(s => s.Count)
             });
+            // DO FUNKCJI ZAPIS SUMY
 
+            // FUNKCJA TWORZĄCA PROCENTOWY UDZIAŁ
             int totalDrinksSum = 0;
             foreach (var drinkSum in everyDrink)
             {
                 totalDrinksSum += drinkSum.Count; // SUMA WSZYSTKICH NAPOJÓW
             }
-            string drinkList = "Procentowy udział:";
+            string drinkList = "Procentowy udział: ";
             foreach (var drink in everyDrink)
             {
                 float drinkPercentage = (float)Math.Round((double)100 * drink.Count) / totalDrinksSum;
-                drinkList = $"{drink.Name} - {drinkPercentage}%";
-                string TEST = $"{drink.Name} - {drinkPercentage}%";
+                drinkList += $"\n{drink.Name} - {drinkPercentage}%";
             }
+            // KONIEC FUNKCJI TWORZĄCEJ PROCENTOWY UDZIAŁ
 
-            MessageBox.Show($"{totalDrinksSum}");
+            // KONIEC PRZEJEBANEGO KODU
+
+            // WYŚWIETLANIE I OUTPUT
+            AvgCaffeine_TextBlock.Text = $"Avg: {avgConsumption}";
+            MaxCaffeine_TextBlock.Text = $"Max: {maxConsumption} Dnia: {dayMaxConsumption}";
+            MinCaffeine_TextBlock.Text = $"Max: {minConsumption} Dnia: {dayMinConsumption}";
+            System.Diagnostics.Debug.WriteLine($"_____{drinkList}");
             //DrinksPercentage_TextBlock.Text = drinkList;
+            // WYŚWIETLANIE I OUTPUT
+
+            // FUNKCJA SORTOWANIE I DATA
             string lastTimeDosed = dailyConsumption.OrderByDescending(x => x.Key).First().Key;
             string format = "dd.MM.yyyy";
             string caffeineToleranceEnd = DateTime.ParseExact(lastTimeDosed, format, CultureInfo.InvariantCulture).AddDays(14).ToString("d");
-
-            // KONIEC PRZEJEBANEGO KODU
 
             if (File.Exists(@"Resources\Data\StatsDrinks.xml"))
             {
@@ -129,6 +139,7 @@ namespace CaffCalc.Pages
 
                 statsPage_Grid.Children.Add(noStats_TextBlock); // DO POPRAWY
             }
+            // KONIEC SORTOWANIE I DATA
         }
     }
 }
