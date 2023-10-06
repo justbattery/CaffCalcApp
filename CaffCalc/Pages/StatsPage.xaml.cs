@@ -1,4 +1,5 @@
 ﻿using CaffCalc.CodeBehind;
+using CaffCalc.Pages.PagesFunctions.StatsPageFunctions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,57 +38,27 @@ namespace CaffCalc.Pages
             InitializeComponent();
             GetStatsFromFile();
 
-            var result = SumUpCaffeineFunction(0, 0);
+            SumUpCaffeine sumUp = new SumUpCaffeine();
+            int sumConsumption = sumUp.SumUpCaffeineFunction(0);
 
-            int sumConsumption = result.sumConsuption;
-            int sumLeft = result.sumLeft;
+            // Obliczanie min, max, średniej, dnia w którym to było
 
-            // Obliczanie min, max, średniej, dnia w którym to było // KOD WZIĘTY Z PIERWSZEJ WERSJI
+            StatsAssignment stats = new StatsAssignment(); /// Funkcja odpowiadająca za przypisanie
 
-            // DO FUNKCJI PRZYPISANIE STATYSTYK !!!
-            int maxConsumption;
-            string dayMaxConsumption;
-            int minConsumption;
-            string dayMinConsumption;
+            var maxValues = stats.AssignMaxValue(sumConsumption);
 
-            int maxLeft;
-            int minLeft;
+            int maxConsumption = maxValues.Item1;
+            string dayMaxConsumption = maxValues.Item2;
 
-            int avgConsumption;
-            int avgLeft;
-            if (File.Exists(@"Resources\Data\StatsDrinks.xml"))
-            {
-                maxConsumption = dailyConsumption.Max(x => x.Value.HowMuchConsumedThatDay);
-                dayMaxConsumption = dailyConsumption.OrderByDescending(x => x.Value.HowMuchConsumedThatDay).First().Key;
-                minConsumption = dailyConsumption.Min(x => x.Value.HowMuchConsumedThatDay);
-                dayMinConsumption = dailyConsumption.OrderByDescending(x => x.Value.HowMuchConsumedThatDay).Last().Key;
+            var minValues = stats.AssignMinValue(sumConsumption);
 
-                // ?? ZDECYDUJ
-                    maxLeft = dailyConsumption.Max(x => x.Value.HowMuchLeftThatDay);
-                    minLeft = dailyConsumption.Min(x => x.Value.HowMuchLeftThatDay);
-                // ??
+            int minConsumption = minValues.Item1;
+            string dayMinConsumption = minValues.Item2;
 
-                avgConsumption = sumConsumption / dailyConsumption.Count();
-                avgLeft = sumLeft / dailyConsumption.Count();
-            }
-            else
-            {
-                maxConsumption = 0;
-                dayMaxConsumption = "0";
-                minConsumption = 0;
-                dayMinConsumption = "0";
-
-                // ?? ZDECYDUJ
-                    maxLeft = 0;
-                    minLeft = 0;
-                // ??
-
-                avgConsumption = 0;
-                avgLeft = 0;
-            }
-            // KONIEC FUNKCJI PRZYPISANIE STATYSTYK !!!
+            int avgConsumption = stats.CalcAverageValue(sumConsumption);
 
             // ZAPIS SUMY DLA POSZCZEGÓLNYCH NAPOJÓW
+
             var everyDrink = dailyConsumption.Values.SelectMany(t => t.drinksConsumedThatDay)
                 .GroupBy(t => t.Name)
                 .Select(g =>
@@ -95,13 +66,14 @@ namespace CaffCalc.Pages
                 Name = g.Key,
                 Count = g.Sum(s => s.Count)
             });
-            // DO FUNKCJI ZAPIS SUMY
+            
+            // ZAPIS SUMY
 
             // FUNKCJA TWORZĄCA PROCENTOWY UDZIAŁ
             int totalDrinksSum = 0;
             foreach (var drinkSum in everyDrink)
             {
-                totalDrinksSum += drinkSum.Count; // SUMA WSZYSTKICH NAPOJÓW
+                totalDrinksSum += drinkSum.Count; /// SUMA WSZYSTKICH NAPOJÓW
             }
             string drinkList = "Procentowy udział: ";
             foreach (var drink in everyDrink)
@@ -111,14 +83,12 @@ namespace CaffCalc.Pages
             }
             // KONIEC FUNKCJI TWORZĄCEJ PROCENTOWY UDZIAŁ
 
-            // KONIEC PRZEJEBANEGO KODU
-
             // WYŚWIETLANIE I OUTPUT
             AvgCaffeine_TextBlock.Text = $"Avg: {avgConsumption}";
             MaxCaffeine_TextBlock.Text = $"Max: {maxConsumption} Dnia: {dayMaxConsumption}";
             MinCaffeine_TextBlock.Text = $"Max: {minConsumption} Dnia: {dayMinConsumption}";
-            System.Diagnostics.Debug.WriteLine($"_____{drinkList}");
-            //DrinksPercentage_TextBlock.Text = drinkList;
+            DrinksPercentage_TextBlock.Text = drinkList;
+            CaffeineTolerance_TextBlock.Text = $"Tolerancja: {safeDailyDose}";
             // WYŚWIETLANIE I OUTPUT
 
             // FUNKCJA SORTOWANIE I DATA

@@ -9,16 +9,15 @@ using static CaffCalc.CodeBehind.BackendDB;
 
 namespace CaffCalc.Pages
 {
-    internal class SumUpCaffeine
+    public class SumUpCaffeine
     {
-        public static (int sumConsuption, int sumLeft) SumUpCaffeineFunction(int sumConsumption, int sumLeft)
+        public int SumUpCaffeineFunction(int sumConsumption)
         {
             foreach (var stats in dailyConsumption)
             {
                 sumConsumption += stats.Value.HowMuchConsumedThatDay;
-                sumLeft += stats.Value.HowMuchLeftThatDay;
             }
-            return (sumConsumption, sumLeft);
+            return sumConsumption;
         }
     }
 }

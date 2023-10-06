@@ -58,6 +58,8 @@
     </ApplicationDefinition>
     <Compile Include="Pages\PagesFunctions\DailyIntakeFunctions\AddDrinkToList.cs" />
     <Compile Include="Pages\PagesFunctions\DailyIntakeFunctions\CheckDrinkList.cs" />
+    <Compile Include="Pages\PagesFunctions\StatsPageFunctions\DrinkPercentage.cs" />
+    <Compile Include="Pages\PagesFunctions\StatsPageFunctions\StatsAssignment.cs" />
     <Compile Include="Pages\PagesFunctions\StatsPageFunctions\SumUpCaffeine.cs" />
     <Compile Include="Windows\DataCollectionWindow.xaml.cs">
       <DependentUpon>DataCollectionWindow.xaml</DependentUpon>
