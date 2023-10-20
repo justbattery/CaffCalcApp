@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaffCalc.CodeBehind;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,8 +30,11 @@ namespace CaffCalc.Windows
         {
             User.Name = name_TextBox.Text;
             User.Surname = surname_TextBox.Text;
-            int.TryParse(weight_TextBox.Text, out User.WeightKg);
-            UserToFile();
+            User.WeightKg = Convert.ToInt32(weight_TextBox.Text); // ZABEZPIECZ PRZED NIE LICZBAMI
+
+            FileHandling userHandler = new FileHandling();
+            userHandler.Save(@"Resources\Data\UserData.xml", User);
+            //UserToFile();
 
             Close();
         }

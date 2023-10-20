@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CodeBehind\FileHandling.cs" />
+    <Compile Include="CodeBehind\Structs\DailyConsumption.cs" />
+    <Compile Include="CodeBehind\Structs\DataGridItem.cs" />
+    <Compile Include="CodeBehind\Structs\Drink.cs" />
+    <Compile Include="CodeBehind\Structs\TodaysDrinks.cs" />
+    <Compile Include="CodeBehind\Structs\Users.cs" />
     <Compile Include="Pages\PagesFunctions\DailyIntakeFunctions\AddDrinkToList.cs" />
     <Compile Include="Pages\PagesFunctions\DailyIntakeFunctions\CheckDrinkList.cs" />
     <Compile Include="Pages\PagesFunctions\StatsPageFunctions\DrinkPercentage.cs" />

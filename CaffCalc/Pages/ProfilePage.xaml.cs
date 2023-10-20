@@ -26,15 +26,13 @@ namespace CaffCalc.Pages
         public ProfilePage()
         {
             InitializeComponent();
-            UserFromFile();
 
-            name_TextBox.Text = BackendDB.User.Name;
-            surname_TextBox.Text = BackendDB.User.Surname;
-            weight_TextBox.Text = BackendDB.User.WeightKg.ToString();
+            name_TextBox.Text = User.Name;
+            surname_TextBox.Text = User.Surname;
+            weight_TextBox.Text = User.WeightKg.ToString();
             acceptChanges_Button.Content = "Zatwierdź";
             acceptChanges_Button.Click += acceptChanges_Button_Click;
         }
-
 
         private void edit_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -65,7 +63,7 @@ namespace CaffCalc.Pages
         {
             User.Name = name_TextBox.Text;
             User.Surname = surname_TextBox.Text;
-            int.TryParse(weight_TextBox.Text, out User.WeightKg);
+            User.WeightKg = Convert.ToInt32(weight_TextBox.Text); // ZABEZPIECZ PRZED NIE LICZBAMI
 
             name_TextBox.IsReadOnly = true;
             surname_TextBox.IsReadOnly = true;
@@ -73,7 +71,9 @@ namespace CaffCalc.Pages
             edit_Button.Content = "Edytuj";
 
             profile_StackPanel.Children.Remove(acceptChanges_Button);
-            UserToFile();
+            FileHandling userHandler = new FileHandling();
+            userHandler.Save(@"Resources\Data\UserData.xml", User);
+            //UserToFile();
         }
     }
 }

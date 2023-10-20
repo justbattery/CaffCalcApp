@@ -16,23 +16,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static CaffCalc.CodeBehind.BackendDB;
 
 namespace CaffCalc
 {
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
-
-    // NOTATKI DO PROJEKTU
-    // - Zmiana UI dailyintake
-    // - Zrób statystyki
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             if (File.Exists(@"Resources\Data\UserData.xml"))
             {
-                BackendDB.UserFromFile();
+                FileHandling userHandler = new FileHandling();
+                userHandler.Load(@"Resources\Data\UserData.xml", User);
+                //BackendDB.UserFromFile();
             }
             else
             {
@@ -40,14 +39,12 @@ namespace CaffCalc
                 dataCollectionWindow.ShowDialog();
             }
 
-            BackendDB.DrinkFromFile();
+            FileHandling drinkHandler = new FileHandling();
+            //drinkHandler.Load(@"Resources\Data\DrinkList.xml", drinks);
+            //BackendDB.DrinkFromFile();
             BackendDB.CalcSafeDailyDose();
             BackendDB.GetStatsFromFile();
             InitializeComponent();
-        }
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -68,6 +65,7 @@ namespace CaffCalc
                 if (content == key)
                 {
                     ChoosenContent.Source = menuControl[key];
+                    break;
                 }
             }
         }

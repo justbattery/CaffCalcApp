@@ -1,1 +1,1 @@
-<BackendDB.Users xmlns="http://schemas.datacontract.org/2004/07/CaffCalc.CodeBehind" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Name>aree</Name><Surname>qweqw</Surname><WeightKg>234</WeightKg></BackendDB.Users>
+<Users xmlns="http://schemas.datacontract.org/2004/07/CaffCalc.CodeBehind" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Name>testas</Name><Surname>test</Surname><WeightKg>123</WeightKg></Users>

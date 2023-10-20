@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static CaffCalc.CodeBehind.Drink;
 using static CaffCalc.CodeBehind.BackendDB;
 
 namespace CaffCalc.Pages
@@ -38,7 +39,10 @@ namespace CaffCalc.Pages
             drinks.Add(new Drink { Number = DrinkId++, Name = userDrinkName, CaffeineMg = userCaffeineContent, CapacityMl = userCapacityMl });
 
             dataGridOfDrinks.Items.Refresh();
-            BackendDB.DrinkToFile();
+
+            FileHandling drinkHandler = new FileHandling();
+            drinkHandler.Save(@"Resources\Data\DrinkList.xml", drinks);
+            //BackendDB.DrinkToFile(); !!!!!!!!!!!!!!!!!!!!!
         }
 
         private void removeDrinkButton_Click(object sender, RoutedEventArgs e)
@@ -48,7 +52,10 @@ namespace CaffCalc.Pages
                 drinks.Remove(selectedDrink);
 
                 dataGridOfDrinks.Items.Refresh();
-                DrinkToFile();
+
+                FileHandling drinkHandler = new FileHandling();
+                drinkHandler.Save(@"Resources\Data\DrinkList.xml", drinks);
+                //DrinkToFile(); !!!!!!!!!!!!!!!!!!!!!!!!!
             }
         }
     }

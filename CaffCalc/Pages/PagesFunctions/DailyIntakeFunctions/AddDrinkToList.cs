@@ -1,10 +1,12 @@
-﻿using System;
+﻿using CaffCalc.CodeBehind;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using static CaffCalc.CodeBehind.BackendDB;
+using static CaffCalc.CodeBehind.Drink;
 using static CaffCalc.DailyIntakeFunctions.CheckDrinkList;
 
 namespace CaffCalc.DailyIntakeFunctions
@@ -26,8 +28,10 @@ namespace CaffCalc.DailyIntakeFunctions
             {
                 DrinkForEach(choosenDrink);
             }
+            FileHandling statsHandler = new FileHandling();
             SaveStatsToDictionary();
-            SaveStatsToFile();
+            statsHandler.Save(@"Resources\Data\StatsDrinks.xml", dailyConsumption);
+            //SaveStatsToFile();
         }
     }
 }

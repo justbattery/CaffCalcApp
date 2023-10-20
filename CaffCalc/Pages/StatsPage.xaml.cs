@@ -36,13 +36,13 @@ namespace CaffCalc.Pages
         public StatsPage()
         {
             InitializeComponent();
-            GetStatsFromFile();
 
             SumUpCaffeine sumUp = new SumUpCaffeine();
             int sumConsumption = sumUp.SumUpCaffeineFunction(0);
 
             // Obliczanie min, max, średniej, dnia w którym to było
 
+            // !!! TO I INNY ZAZNACZONY FRAGMENT DO INNEJ FUKCJI !!!
             StatsAssignment stats = new StatsAssignment(); /// Funkcja odpowiadająca za przypisanie
 
             var maxValues = stats.AssignMaxValue(sumConsumption);
@@ -56,10 +56,12 @@ namespace CaffCalc.Pages
             string dayMinConsumption = minValues.Item2;
 
             int avgConsumption = stats.CalcAverageValue(sumConsumption);
+            // !!!!!!!
 
             // ZAPIS SUMY DLA POSZCZEGÓLNYCH NAPOJÓW
+            List<TodaysDrinks> everyDrink = new List<TodaysDrinks>();
 
-            var everyDrink = dailyConsumption.Values.SelectMany(t => t.drinksConsumedThatDay)
+            everyDrink = (List<TodaysDrinks>)dailyConsumption.Values.SelectMany(t => t.drinksConsumedThatDay)
                 .GroupBy(t => t.Name)
                 .Select(g =>
             new {
@@ -68,28 +70,16 @@ namespace CaffCalc.Pages
             });
             
             // ZAPIS SUMY
+            DrinkPercentage drinkPercentage = new DrinkPercentage();
+            string drinkList = drinkPercentage.DrinkList(everyDrink);
 
-            // FUNKCJA TWORZĄCA PROCENTOWY UDZIAŁ
-            int totalDrinksSum = 0;
-            foreach (var drinkSum in everyDrink)
-            {
-                totalDrinksSum += drinkSum.Count; /// SUMA WSZYSTKICH NAPOJÓW
-            }
-            string drinkList = "Procentowy udział: ";
-            foreach (var drink in everyDrink)
-            {
-                float drinkPercentage = (float)Math.Round((double)100 * drink.Count) / totalDrinksSum;
-                drinkList += $"\n{drink.Name} - {drinkPercentage}%";
-            }
-            // KONIEC FUNKCJI TWORZĄCEJ PROCENTOWY UDZIAŁ
-
-            // WYŚWIETLANIE I OUTPUT
+            // WYŚWIETLANIE I OUTPUT !!! TO DO INNEJ FUKCJI !!!!
             AvgCaffeine_TextBlock.Text = $"Avg: {avgConsumption}";
             MaxCaffeine_TextBlock.Text = $"Max: {maxConsumption} Dnia: {dayMaxConsumption}";
             MinCaffeine_TextBlock.Text = $"Max: {minConsumption} Dnia: {dayMinConsumption}";
             DrinksPercentage_TextBlock.Text = drinkList;
             CaffeineTolerance_TextBlock.Text = $"Tolerancja: {safeDailyDose}";
-            // WYŚWIETLANIE I OUTPUT
+            // WYŚWIETLANIE I OUTPUT !!!!!
 
             // FUNKCJA SORTOWANIE I DATA
             string lastTimeDosed = dailyConsumption.OrderByDescending(x => x.Key).First().Key;

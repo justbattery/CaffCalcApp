@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaffCalc.CodeBehind;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CaffCalc.Pages.PagesFunctions.StatsPageFunctions
 {
-    public class DrinkPercentage
+    internal class DrinkPercentage
     {
-        public string DrinkList(IEnumerable<object> everyDrink)
+        public string DrinkList(List<TodaysDrinks> everyDrink)
         {
             int totalDrinksSum = 0;
             foreach (var drinkSum in everyDrink)
