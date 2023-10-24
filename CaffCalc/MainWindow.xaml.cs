@@ -30,8 +30,7 @@ namespace CaffCalc
             if (File.Exists(@"Resources\Data\UserData.xml"))
             {
                 FileHandling userHandler = new FileHandling();
-                userHandler.Load(@"Resources\Data\UserData.xml", User);
-                //BackendDB.UserFromFile();
+                User = userHandler.Load<Users>(@"Resources\Data\UserData.xml");
             }
             else
             {
@@ -40,7 +39,7 @@ namespace CaffCalc
             }
 
             FileHandling drinkHandler = new FileHandling();
-            //drinkHandler.Load(@"Resources\Data\DrinkList.xml", drinks);
+            drinks = drinkHandler.Load<List<Drink>>(@"Resources\Data\DrinkList.xml");
             //BackendDB.DrinkFromFile();
             BackendDB.CalcSafeDailyDose();
             BackendDB.GetStatsFromFile();
